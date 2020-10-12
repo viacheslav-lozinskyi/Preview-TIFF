@@ -11,11 +11,7 @@ namespace resource.package
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(CONSTANT.NAME, CONSTANT.DESCRIPTION, CONSTANT.VERSION)]
     [Guid(CONSTANT.GUID)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.FirstLaunchSetup_string, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideAutoLoad(VSConstants.UICONTEXT.ShellInitialized_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasMultipleProjects_string, PackageAutoLoadFlags.BackgroundLoad)]
-    [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionHasSingleProject_string, PackageAutoLoadFlags.BackgroundLoad)]
     public sealed class PreviewTIFFPackage : AsyncPackage
     {
         internal static class CONSTANT
@@ -26,16 +22,18 @@ namespace resource.package
             public const string EXTENSION2 = ".TIFF";
             public const string GUID = "9962F454-B585-4407-9CB7-B4A947AE87EE";
             public const string NAME = "Preview-TIFF";
-            public const string VERSION = "1.0.1";
+            public const string VERSION = "1.0.2";
         }
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             {
                 cartridge.AnyPreview.Connect();
                 cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION1, new preview.TIFF());
                 cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION2, new preview.TIFF());
+            }
+            {
+                await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             }
         }
 
