@@ -16,3 +16,5 @@ Download the extension from the [Visual Studio Marketplace](https://marketplace.
 
 ---
 Data visualization is based on [MetaProject](https://marketplace.visualstudio.com/items?itemName=ViacheslavLozinskyi.MetaProject)
+
+Data extraction is based on [TagLib-Sharp](https://github.com/mono/taglib-sharp)

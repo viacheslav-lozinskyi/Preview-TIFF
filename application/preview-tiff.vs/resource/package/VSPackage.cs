@@ -22,15 +22,15 @@ namespace resource.package
             public const string EXTENSION2 = ".TIFF";
             public const string GUID = "9962F454-B585-4407-9CB7-B4A947AE87EE";
             public const string NAME = "Preview-TIFF";
-            public const string VERSION = "1.0.2";
+            public const string VERSION = "1.0.3";
         }
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             {
                 cartridge.AnyPreview.Connect();
-                cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION1, new preview.TIFF());
-                cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION2, new preview.TIFF());
+                cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION1, new resource.preview.Taglib());
+                cartridge.AnyPreview.Register(cartridge.AnyPreview.MODE.PREVIEW, CONSTANT.EXTENSION2, new resource.preview.Taglib());
             }
             {
                 await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
