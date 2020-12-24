@@ -22,7 +22,7 @@ namespace resource.package
             public const string EXTENSION2 = ".TIFF";
             public const string GUID = "9962F454-B585-4407-9CB7-B4A947AE87EE";
             public const string NAME = "Preview-TIFF";
-            public const string VERSION = "1.0.3";
+            public const string VERSION = "1.0.4";
         }
 
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
